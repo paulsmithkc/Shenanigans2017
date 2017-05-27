@@ -28,6 +28,8 @@ public class FirstPersonCamera : MonoBehaviour
     float x = 0.0f;
     float y = 0.0f;
 
+    private AudioSource pickupSound;
+
 	// Use this for initialization
 	void Start ()
     {
@@ -37,6 +39,12 @@ public class FirstPersonCamera : MonoBehaviour
 
         // Lock mouse cursor
         Cursor.lockState = CursorLockMode.Locked;
+
+        AudioSource source = GetComponent<AudioSource>();
+        if (source)
+        {
+            pickupSound = source;
+        }
 	}
 
     private void OnDestroy()
@@ -123,6 +131,11 @@ public class FirstPersonCamera : MonoBehaviour
 
         // Turn off gravity, or else shit gets weird
         heldItem.gameObject.GetComponent<Rigidbody>().useGravity = false;
+
+        if (pickupSound != null)
+        {
+            pickupSound.Play();
+        }
     }
 
     void DropItem()
