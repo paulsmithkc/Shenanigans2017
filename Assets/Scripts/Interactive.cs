@@ -9,6 +9,7 @@ public class Interactive : MonoBehaviour {
 
     private AudioSource landingSound;
     private Rigidbody rb;
+    private bool ready = false;
 
 
     // Use this for initialization
@@ -20,9 +21,14 @@ public class Interactive : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (rb.useGravity)
+        if (ready && rb.useGravity)
         {
             landingSound.Play();
+        }
+
+        if (!ready)
+        {
+            ready = true;
         }
     }
 }
