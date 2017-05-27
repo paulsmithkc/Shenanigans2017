@@ -278,6 +278,8 @@ MonoBehaviour:
   controllerSensitivity: 1
   invertMouse: 1
   invertController: 0
+  minRotation: -15
+  maxRotation: 40
 --- !u!1 &1808051307
 GameObject:
   m_ObjectHideFlags: 0
