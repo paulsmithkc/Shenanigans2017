@@ -19,6 +19,7 @@ public class FirstPersonCamera : MonoBehaviour
 
     // Maximum reach for picking up objects
     public float maxReach = 10;
+    public ItemTooltip tooltip = null;
 
     private Transform heldItem;
     private float heldItemDistance;
@@ -71,6 +72,9 @@ public class FirstPersonCamera : MonoBehaviour
         Quaternion rotation = Quaternion.Euler(y, x, 0);
         transform.rotation = rotation;
 
+        // Gotta do some shifty bits to get the layer masks to work as expected
+        int interactiveOnlyMask = 1 << LayerMask.NameToLayer("Interactive");
+
         // See if we're trying to pick something up
         float pickup = Input.GetAxis("Pickup");
         if (pickup != 0 && previousPickupValue == 0)
@@ -78,9 +82,7 @@ public class FirstPersonCamera : MonoBehaviour
             if (heldItem == null)
             {
                 RaycastHit hit;
-                // Gotta do some shifty bits to get the layer masks to work as expected
-                int mask = 1 << LayerMask.NameToLayer("Interactive");
-                if (Physics.Raycast(transform.position, transform.forward, out hit, maxReach, mask))
+                if (Physics.Raycast(transform.position, transform.forward, out hit, maxReach, interactiveOnlyMask))
                 {
                     Pickup(hit.transform);
                 }
@@ -88,6 +90,19 @@ public class FirstPersonCamera : MonoBehaviour
             else
             {
                 DropItem();
+            }
+            HideTooltip();
+        }
+        else if (heldItem == null)
+        {
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, transform.forward, out hit, maxReach, interactiveOnlyMask))
+            {
+                ShowTooltip(hit);
+            }
+            else
+            {
+                HideTooltip();
             }
         }
 
@@ -117,6 +132,34 @@ public class FirstPersonCamera : MonoBehaviour
             // Turn the gravities back on!
             heldItem.gameObject.GetComponent<Rigidbody>().useGravity = true;
             heldItem = null;
+        }
+    }
+
+    void ShowTooltip(RaycastHit hit)
+    {
+        if (tooltip != null)
+        {
+            var itemTag = hit.collider.GetComponent<ItemTag>();
+            if (itemTag != null)
+            {
+                tooltip.transform.position = hit.point - 0.1f * transform.forward;
+                tooltip.transform.rotation = transform.rotation;
+                tooltip.itemNameField.text = itemTag.itemName;
+                tooltip.itemDescriptionField.text = itemTag.itemDescription;
+                tooltip.gameObject.SetActive(true);
+            }
+            else
+            {
+                tooltip.gameObject.SetActive(false);
+            }
+        }
+    }
+
+    void HideTooltip()
+    {
+        if (tooltip != null)
+        {
+            tooltip.gameObject.SetActive(false);
         }
     }
 

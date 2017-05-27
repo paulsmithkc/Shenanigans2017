@@ -39,6 +39,7 @@ GameObject:
   - component: {fileID: 95417669794090654}
   - component: {fileID: 54291928964489008}
   - component: {fileID: 65300539391562336}
+  - component: {fileID: 114131218401849140}
   m_Layer: 8
   m_Name: potion2
   m_TagString: Untagged
@@ -156,3 +157,16 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114131218401849140
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1211442756953606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a2b7703bc99c104e960ba7025a4cf36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemName: 
+  itemDescription: 
