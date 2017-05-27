@@ -11,6 +11,10 @@ public class Barbarian : Character {
 			case "Strength-Increasing" :
 				points = MAXIMUM_PURCHASE_POINTS;
 				break;
+			case "Axe":
+			case "Sword":
+				points = MAXIMUM_PURCHASE_POINTS * .85;
+				break;
 			case "Chocolate":
 			case "Vanilla":
 			case "Caramel":

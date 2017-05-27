@@ -17,9 +17,9 @@ public abstract class Character : MonoBehaviour {
 		
 	}
 
-	public virtual double CalculatePurchasePoints(ItemTag tag) {
+	public virtual double CalculatePurchasePoints(Item item) {
 		var points = STARTING_VALUE;
-		var properties = tag.itemName.Split (new char[]{' '});
+		var properties = item.itemTag.itemName.Split (new char[]{' '});
 
 		foreach (var property in properties) {
 			points += getPointsForProperty(property.Replace("-Flavored", string.Empty));
