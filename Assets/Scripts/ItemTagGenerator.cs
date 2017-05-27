@@ -52,7 +52,7 @@ public class ItemTagGenerator : MonoBehaviour {
     private readonly string[] _itemTypes = new string[] { "Potable", "Weapon" };
 
     private readonly Dictionary<string, string[]> _items = new Dictionary<string, string[]>{
-        {"Potable", new string[] {"Elixr", "Potion", "Sauce", "Juice", "Oil"}},
+        {"Potable", new string[] {"Elixr", "Potion", "Sauce", "Juice", "Oil", "Ale", "Stout", "Beer", "Wine"}},
         {"Weapon", new string[] {"Dagger", "Sword", "Butter Knife", "Axe"}}
     };
 
@@ -60,9 +60,10 @@ public class ItemTagGenerator : MonoBehaviour {
         "Beaker", "Vial", "Flask", "Shot", "Bong"
     };
 
-    private readonly string[][] _possibleSideEffects = new string[][] {
-        new string[] {"insanity", "mumps", "turning orange", "lack of confidence", "bronchitis" },
-        new string[] {"bow-leggedness", "tone-deafness", "gluten allergies", "veganism", "baldness" }
+    private readonly string[]_possibleSideEffects = new string[]{
+        "insanity", "mumps", "turning orange", "lack of confidence", "bronchitis",
+		"bow-leggedness", "tone-deafness", "gluten allergies", "veganism", "baldness",
+		"reduced fashion sense", "laziness", "extra limbs", "emphysema", "sleepwalking"
     };
 
     private readonly string[][] _worksAgainst = new string[][] {
@@ -77,21 +78,29 @@ public class ItemTagGenerator : MonoBehaviour {
     
     private ItemTag GenerateTag()
     {
-        List<string> titleElements = new List<string>();
+		var currentModifierCount = MAXIMUM_MODIFIER_COUNT;
+        var titleElements = new List<string>();
 
         if (Random.Range(0, 10) <= 6)
         {
             titleElements.Add(string.Format("{0}-Flavored", RandomElement(_flavors)));
+			--currentModifierCount;
         }
 
-        for (var index = Random.Range(0, _exclusiveModifierTable.Length); index >= 0; --index)
+		var usedIndexes = new List<int>{ };
+        while (currentModifierCount > 0)
         {
-            titleElements.Add(RandomElement(_exclusiveModifierTable[index]));
+			var index = Random.Range(0, _exclusiveModifierTable.Length); 
+			if (!usedIndexes.Contains(index)) {
+				titleElements.Add (RandomElement (_exclusiveModifierTable [index]));
+				usedIndexes.Add (index);
+				--currentModifierCount;
+			}
         }
 
-        titleElements.Add(_functions[Random.Range(0, _functions.Length)]);
+		titleElements.Add (RandomElement (_functions));
 
-        string itemType = _itemTypes[Random.Range(0, _itemTypes.Length)];
+		var itemType = RandomElement (_itemTypes);
         titleElements.Add(RandomElement(_items[itemType]));
 
         switch (itemType)
@@ -103,12 +112,18 @@ public class ItemTagGenerator : MonoBehaviour {
                 break;
         }
         
-        List<string> descriptionElements = new List<string>();
+        var descriptionElements = new List<string>();
 
-        List<string> sideEffects = new List<string>();
-        for (var index = Random.Range(0, _possibleSideEffects.Length); index >= 0; --index)
-        {
-            sideEffects.Add(RandomElement(_possibleSideEffects[index]));
+		usedIndexes = new List<int> ();
+		var currentSideEffectCount = Random.Range(1, MAXIMUM_SIDE_EFFECT_COUNT);
+        var sideEffects = new List<string>();
+		while (sideEffects.Count <= currentSideEffectCount)
+		{
+        	var index = Random.Range(0, _possibleSideEffects.Length); 
+			if (!usedIndexes.Contains (index)) {
+				sideEffects.Add (_possibleSideEffects [index]);
+				usedIndexes.Add (index);
+			}
         }
         descriptionElements.Add(string.Format("Possible Side Effects:  {0}", string.Join(", ", sideEffects.ToArray())));
 
