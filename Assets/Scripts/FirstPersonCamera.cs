@@ -19,7 +19,8 @@ public class FirstPersonCamera : MonoBehaviour
 
     // Maximum reach for picking up objects
     public float maxReach = 10;
-    public ItemTooltip tooltip = null;
+    public ItemTooltip itemTooltip = null;
+    public ItemTagGenerator labelDispensor = null;
 
     private Transform heldItem;
     private float heldItemDistance;
@@ -82,6 +83,21 @@ public class FirstPersonCamera : MonoBehaviour
 
         // Gotta do some shifty bits to get the layer masks to work as expected
         int interactiveOnlyMask = 1 << LayerMask.NameToLayer("Interactive");
+
+        if (Input.GetButtonDown("Label"))
+        {
+            var itemTag = labelDispensor.DispenseTag();
+
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, transform.forward, out hit, maxReach, interactiveOnlyMask))
+            {
+                var item = hit.collider.gameObject.GetComponent<Item>();
+                if (item != null)
+                {
+                    item.itemTag = itemTag;
+                }
+            }
+        }
 
         // See if we're trying to pick something up
         float pickup = Input.GetAxis("Pickup");
@@ -150,20 +166,20 @@ public class FirstPersonCamera : MonoBehaviour
 
     void ShowTooltip(RaycastHit hit)
     {
-        if (tooltip != null)
+        if (itemTooltip != null)
         {
-            tooltip.transform.position = hit.point - 0.3f * transform.forward;
-            tooltip.transform.rotation = transform.rotation;
-            
-            tooltip.ShowTooltip(hit.collider.gameObject);
+            itemTooltip.transform.position = hit.point - 0.3f * transform.forward;
+            itemTooltip.transform.rotation = transform.rotation;
+
+            itemTooltip.ShowTooltip(hit.collider.gameObject);
         }
     }
 
     void HideTooltip()
     {
-        if (tooltip != null)
+        if (itemTooltip != null)
         {
-            tooltip.gameObject.SetActive(false);
+            itemTooltip.gameObject.SetActive(false);
         }
     }
 
