@@ -17,7 +17,7 @@ public class Hero : MonoBehaviour
         {
             Vector3 direction = (transform.position - following.position).normalized;
             Vector3 target = following.position + direction * buffer;
-            Debug.DrawLine(following.position, target);
+            target.y = transform.position.y;
             transform.position = Vector3.MoveTowards(transform.position, target, stepDistance);
         }
 	}
