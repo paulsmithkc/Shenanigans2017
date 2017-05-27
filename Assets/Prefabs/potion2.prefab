@@ -40,6 +40,8 @@ GameObject:
   - component: {fileID: 54291928964489008}
   - component: {fileID: 65300539391562336}
   - component: {fileID: 114603345512452774}
+  - component: {fileID: 82137631519592618}
+  - component: {fileID: 114172868995601470}
   m_Layer: 8
   m_Name: potion2
   m_TagString: Untagged
@@ -140,6 +142,86 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3, y: 3, z: 2}
   m_Center: {x: 0, y: 0, z: 1}
+--- !u!82 &82137631519592618
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1211442756953606}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &95417669794090654
 Animator:
   serializedVersion: 3
@@ -157,6 +239,19 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114172868995601470
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1211442756953606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8714522386c06d044ac8479b2bf093f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  landingSound: {fileID: 8300000, guid: 090e7d91eeab791449e0db6c4088fc59, type: 3}
+  crashSound: {fileID: 8300000, guid: 64551dd0a29f8f04daca1e84c047fff5, type: 3}
 --- !u!114 &114603345512452774
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -171,3 +266,6 @@ MonoBehaviour:
   colorName: 
   modelName: Pot
   material: {fileID: 0}
+  itemTag:
+    itemName: 
+    itemDescription: 

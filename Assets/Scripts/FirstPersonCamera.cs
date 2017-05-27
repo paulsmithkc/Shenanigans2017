@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class FirstPersonCamera : MonoBehaviour
 {
-
     // Sensitivity feels different for mouse and controller
     public float mouseSensitivity = 1;
     public float controllerSensitivity = 1;
@@ -29,7 +29,8 @@ public class FirstPersonCamera : MonoBehaviour
     float x = 0.0f;
     float y = 0.0f;
 
-    private AudioSource pickupSound;
+    private AudioSource audioSource;
+    public AudioClip pickupSound;
 
 	// Use this for initialization
 	void Start ()
@@ -41,11 +42,7 @@ public class FirstPersonCamera : MonoBehaviour
         // Lock mouse cursor
         Cursor.lockState = CursorLockMode.Locked;
 
-        AudioSource source = GetComponent<AudioSource>();
-        if (source)
-        {
-            pickupSound = source;
-        }
+        audioSource = GetComponent<AudioSource>();
 	}
 
     private void OnDestroy()
@@ -148,9 +145,9 @@ public class FirstPersonCamera : MonoBehaviour
         // Turn off gravity, or else shit gets weird
         heldItem.gameObject.GetComponent<Rigidbody>().useGravity = false;
 
-        if (pickupSound != null)
+        if (audioSource != null && pickupSound != null)
         {
-            pickupSound.Play();
+            audioSource.PlayOneShot(pickupSound, 1);
         }
     }
 

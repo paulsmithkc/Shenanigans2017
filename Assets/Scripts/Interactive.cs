@@ -7,26 +7,33 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class Interactive : MonoBehaviour {
 
-    private AudioSource landingSound;
-    private Rigidbody rb;
-    private bool ready = false;
+    public AudioClip landingSound;
+    public AudioClip crashSound;
+    private Rigidbody rigidBody;
+    private AudioSource audioSource;
+    private bool ready;
 
 
     // Use this for initialization
-    void Start ()
+    void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        landingSound = GetComponent<AudioSource>();
-	}
+        rigidBody = GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
+        ready = false;
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (ready && rb.useGravity)
+        if (string.Equals(collision.gameObject.tag, "Floor"))
         {
-            landingSound.Play();
+            AudioSource.PlayClipAtPoint(crashSound, collision.contacts[0].point, 1);
+            GameObject.Destroy(gameObject);
         }
-
-        if (!ready)
+        else if (ready && rigidBody.useGravity && landingSound != null)
+        {
+            AudioSource.PlayClipAtPoint(landingSound, collision.contacts[0].point, 1);
+        }
+        else if (!ready)
         {
             ready = true;
         }

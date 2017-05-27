@@ -25,6 +25,8 @@ GameObject:
   - component: {fileID: 54884379584849278}
   - component: {fileID: 65216138050542066}
   - component: {fileID: 114618774681682508}
+  - component: {fileID: 82837404985452850}
+  - component: {fileID: 114592698099006040}
   m_Layer: 8
   m_Name: potion4
   m_TagString: Untagged
@@ -111,6 +113,86 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.337966, y: 1.1587123, z: 1.5926814}
   m_Center: {x: 0, y: 0, z: 0.7963407}
+--- !u!82 &82837404985452850
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1309556860468778}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &95417803469414824
 Animator:
   serializedVersion: 3
@@ -128,6 +210,19 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114592698099006040
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1309556860468778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8714522386c06d044ac8479b2bf093f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  landingSound: {fileID: 8300000, guid: 090e7d91eeab791449e0db6c4088fc59, type: 3}
+  crashSound: {fileID: 8300000, guid: 64551dd0a29f8f04daca1e84c047fff5, type: 3}
 --- !u!114 &114618774681682508
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -142,3 +237,6 @@ MonoBehaviour:
   colorName: 
   modelName: Vial
   material: {fileID: 0}
+  itemTag:
+    itemName: 
+    itemDescription: 

@@ -29,7 +29,7 @@ GameObject:
   - component: {fileID: 65884013487666520}
   m_Layer: 0
   m_Name: bookshelf
-  m_TagString: Untagged
+  m_TagString: Bookshelf
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
