@@ -139,19 +139,10 @@ public class FirstPersonCamera : MonoBehaviour
     {
         if (tooltip != null)
         {
-            var itemTag = hit.collider.GetComponent<ItemTag>();
-            if (itemTag != null)
-            {
-                tooltip.transform.position = hit.point - 0.1f * transform.forward;
-                tooltip.transform.rotation = transform.rotation;
-                tooltip.itemNameField.text = itemTag.itemName;
-                tooltip.itemDescriptionField.text = itemTag.itemDescription;
-                tooltip.gameObject.SetActive(true);
-            }
-            else
-            {
-                tooltip.gameObject.SetActive(false);
-            }
+            tooltip.transform.position = hit.point - 0.3f * transform.forward;
+            tooltip.transform.rotation = transform.rotation;
+            
+            tooltip.ShowTooltip(hit.collider.gameObject);
         }
     }
 

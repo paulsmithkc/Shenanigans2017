@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 95718554945399716}
   - component: {fileID: 54320246335332758}
   - component: {fileID: 65588172815286008}
-  - component: {fileID: 114207085476448906}
+  - component: {fileID: 114954523722025298}
   m_Layer: 8
   m_Name: potion1
   m_TagString: Untagged
@@ -227,7 +227,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114207085476448906
+--- !u!114 &114954523722025298
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -235,8 +235,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1909258419243392}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a2b7703bc99c104e960ba7025a4cf36, type: 3}
+  m_Script: {fileID: 11500000, guid: 9df5fbb0ea6b31541b2d1058c6235b68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: 
-  itemDescription: 
+  colorName: 
+  modelName: Vase
+  material: {fileID: 0}
