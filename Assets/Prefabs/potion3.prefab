@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 95926592129271594}
   - component: {fileID: 54438149438424902}
   - component: {fileID: 65088430223534112}
-  - component: {fileID: 114874279013961934}
+  - component: {fileID: 114897672862114836}
   m_Layer: 8
   m_Name: potion3
   m_TagString: Untagged
@@ -128,7 +128,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114874279013961934
+--- !u!114 &114897672862114836
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -136,8 +136,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1132857366771852}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a2b7703bc99c104e960ba7025a4cf36, type: 3}
+  m_Script: {fileID: 11500000, guid: 9df5fbb0ea6b31541b2d1058c6235b68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: 
-  itemDescription: 
+  colorName: 
+  modelName: Flask
+  material: {fileID: 0}
