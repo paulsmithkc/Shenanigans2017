@@ -29,15 +29,19 @@ public class ItemTagGenerator : MonoBehaviour {
         return t;
     }
 
+	private const int MAXIMUM_MODIFIER_COUNT = 2;
+	private const int MAXIMUM_SIDE_EFFECT_COUNT = 6;
+
     private readonly string[] _flavors = new string[] {
-        "Blueberry", "Chicken", "Chocolate", "Gerbil", "Hemlock", "Hemp", "Hummus", "Vanilla"
+        "Blueberry", "Chicken", "Chocolate", "Gerbil", "Hemlock", "Hemp", "Hummus", "Vanilla",
+		"Cherry", "Caramel", "Arsenic", "Poppy Seed", "Pork", "Waffle",
     };
 
-    private readonly string[][] _exclusiveModifierTable = new string[][] {
+    private readonly string[][]_exclusiveModifierTable = new string[][] {
         new string[] {"Rusty", "Shiny", "Transparent"},
         new string[] {"Artificial", "Natural", "Organic", "Synthetic", "Vegan", },
         new string[] {"Magnetic", "Metallic", "Monopolar", "Plastic", "Radioactive", "Static" },
-        new string[] {"Double-Edged", "Single-Edged", "Chewable"}
+		new string[] {"Double-Edged", "Single-Edged", "Chewable"},
     };
 
     private readonly string[] _functions = new string[] {
