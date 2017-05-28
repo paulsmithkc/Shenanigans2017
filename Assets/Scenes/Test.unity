@@ -180,11 +180,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114907563977113850, guid: 86e6323b3b4f02943b51e62383f728da,
-        type: 2}
-      propertyPath: spawnables.Array.size
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 4813940958409938, guid: 86e6323b3b4f02943b51e62383f728da, type: 2}
       propertyPath: m_LocalPosition.x
       value: 1.4308193
@@ -222,12 +217,6 @@ Prefab:
       propertyPath: desk
       value: 
       objectReference: {fileID: 1286681999}
-    - target: {fileID: 114907563977113850, guid: 86e6323b3b4f02943b51e62383f728da,
-        type: 2}
-      propertyPath: spawnables.Array.data[1]
-      value: 
-      objectReference: {fileID: 1499029305009526, guid: d47224c6e3bebdb4380a5d995bf026c2,
-        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 86e6323b3b4f02943b51e62383f728da, type: 2}
   m_IsPrefabParent: 0
