@@ -194,4 +194,89 @@ public class Hero : MonoBehaviour
         return 0.0f;
     }
 
+	/*
+	case ”Blueberry" :
+	case  "Chicken" :
+	case  "Chocolate" :
+	case  "Gerbil" :
+	case  "Hemlock" :
+	case  "Hemp" :
+	case  "Hummus" :
+	case  "Vanilla" :
+	case  "Cherry"
+	case  "Caramel"
+	case  "Arsenic"
+	case  “Poppy Seed"
+	case  "Pork"
+	case  "Waffle"
+	case "Rusty"
+	case  "Shiny"
+	case  "Transparent"
+	case ”Artificial"
+	case  "Natural"
+	case  "Organic"
+	case  "Synthetic"
+	case  "Vegan"
+	case “Magnetic"
+	case  "Metallic"
+	case  "Monopolar"
+	case  "Plastic"
+	case  "Radioactive"
+	case  "Static" 
+	case “Double-Edged"
+	case  "Single-Edged"
+	case  "Chewable"
+	case "Flight"
+	case  "Dark-Vision"
+	case  "Musical"
+	case  "Troll-Summoning"
+	case “Invisibility"
+	case  "Strength-Increasing"
+	case  "Stupidity"
+	case  "Wisdom"
+	case "Potable"
+	case  "Weapon" 
+	case  "Elixr"
+	case  "Potion"
+	case  "Sauce"
+	case  "Juice"
+	case  "Oil"
+	case  "Ale"
+	case  "Stout"
+	case  "Beer"
+	case  "Wine"
+	case  "Dagger"
+	case  "Sword"
+	case  "Butter Knife"
+	case  "Axe"
+	*/
+
+	/*
+	case "insanity" :
+	case  "mumps" :
+	case  "turning orange" :
+	case  "lack of confidence" :
+	case  "bronchitis" :
+	case "bow-leggedness" :
+	case  "tone-deafness" :
+	case  "gluten allergies" :
+	case  "veganism" :
+	case  "baldness" :
+	case “reduced fashion sense" :
+	case  "laziness" :
+	case  "extra limbs" :
+	case  "emphysema" :
+	case  "sleepwalking" :
+	case "orcs" :
+	case  "kobolds" :
+	case  "aardvarks" :
+	case  "Elvis" :
+	case  "dragons" 
+	case  "imaginary beings" 
+	case  "walls" :
+	case  "Volkswagens" ;
+	case  "chariots" :
+	case  "pterodactyls" :
+	case  "quarks" :
+	*/
 }
