@@ -6,9 +6,9 @@ using UnityEngine;
 public class Hero : MonoBehaviour
 {
     protected const float MAXIMUM_PURCHASE_POINTS = 5.0f;
-    private const float STARTING_VALUE = 5.0f;
-    private const float BASE_NO_SALE_CHANCE = 5.0f;
-    private const float TIME_TO_BUY = 1.0f;
+    private const float STARTING_VALUE = 1.0f;
+    private const float BASE_NO_SALE_CHANCE = 2.0f;
+    private const float TIME_TO_BUY = 5.0f;
 
     private Rigidbody _rigidBody;
     private float _stepBuffer = 1.0f;
@@ -61,23 +61,34 @@ public class Hero : MonoBehaviour
         }
         if (_isAtCounter && !_isExiting)
         {
+            var counter = GameObject.FindObjectOfType<SalesCounterTop>();
+            var items = counter.items.Where(x => !x.isBought).ToList();
+            foreach (var i in items)
+            {
+                float v = Mathf.Max(0.0f, CalculatePurchasePoints(i));
+                i.itemValue = v;
+            }
+
             _timeTillBuy -= Time.deltaTime;
             if (_timeTillBuy <= 0.0f)
             {
                 _isExiting = true;
                 _isAtCounter = false;
-                _itemBought = SelectItemToBuy();
+                _itemBought = SelectItemToBuy(items);
                 if (_itemBought != null)
                 {
+                    counter.items.Remove(_itemBought);
+
                     _itemBought.rigidBody.useGravity = false;
-                    //_itemBought.rigidBody.isKinematic = true;
+                    _itemBought.rigidBody.detectCollisions = false;
+                    _itemBought.rigidBody.isKinematic = true;
                     _itemBought.collider.enabled = false;
-                    _itemBought.transform.parent =
-                        this.transform;
+                    _itemBought.transform.parent = this.transform;
                     _itemBought.rigidBody.position =
                         this.transform.position
                         - 0.5f * this.transform.right
-                        + 0.5f * this.transform.forward;
+                        + 0.5f * this.transform.forward
+                        + 0.2f * this.transform.up;
                 }
                 
                 var spawn = GameObject.FindObjectOfType<HeroSpawner>();
@@ -100,12 +111,9 @@ public class Hero : MonoBehaviour
     /// based on its relative value, then randomly selects from the resulting distribution.
     /// </summary>
     /// <returns>The item.</returns>
-    public Item SelectItemToBuy()
+    public Item SelectItemToBuy(IList<Item> items)
     {
         Item selectedItem = null;
-
-        var counter = GameObject.FindObjectOfType<SalesCounterTop>();
-        var items = counter.items.Where(x => !x.isBought).ToList();
         
         float sum = BASE_NO_SALE_CHANCE;
         foreach (var i in items)
@@ -147,7 +155,6 @@ public class Hero : MonoBehaviour
                 "{0} chose to buy {3} {4} ({1}/{2})",
                 GetType().Name, selectedItem.itemValue, sum, selectedItem.colorName, selectedItem.modelName
             );
-            counter.items.Remove(selectedItem);
         }
         
         return selectedItem;
