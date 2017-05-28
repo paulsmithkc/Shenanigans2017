@@ -2564,7 +2564,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3abc8b781dac0a4dada5e50b83e58b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _audioPlayerPrefab: {fileID: 0}
+  _audioPlayerPrefab: {fileID: 1592754093486534, guid: 13f0b4025acc04f449f732cd53b12d90,
+    type: 2}
   _pauseButton: Pause
   _restartButton: Restart
   _quitButton: Quit
