@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Rogue : Hero
 {
-	protected override double getPointsForProperty (string property)
+	protected override float getPointsForProperty (string property)
 	{
-		double points;
+        float points;
 		switch (property) {
 		case "Hemp":
 		case "Poppy Seed":
@@ -15,29 +15,29 @@ public class Rogue : Hero
 		case "Chocolate":
 		case "Gerbil":
 		case "Waffle":
-			points = MAXIMUM_PURCHASE_POINTS * .5;
+			points = MAXIMUM_PURCHASE_POINTS * .5f;
 			break;
 		case "Chicken":
 		case "Blueberry":
-			points = -1 * MAXIMUM_PURCHASE_POINTS * .5;
+			points = MAXIMUM_PURCHASE_POINTS * -.5f;
 			break;
 		case "Invisibility":
-			points = MAXIMUM_PURCHASE_POINTS * .666;
+			points = MAXIMUM_PURCHASE_POINTS * .666f;
 			break;
 		case "Synthetic":
 		case "Chewable":
-			points = MAXIMUM_PURCHASE_POINTS * .7;
+			points = MAXIMUM_PURCHASE_POINTS * .7f;
 			break;
 		case "Vegan":
 		case "Organic":
-			points = -1 * MAXIMUM_PURCHASE_POINTS * .7;
+			points = MAXIMUM_PURCHASE_POINTS * -.7f;
 			break;
 		case "Transparent":
-			points = MAXIMUM_PURCHASE_POINTS * .8;
+			points = MAXIMUM_PURCHASE_POINTS * .8f;
 			break;
 		case "Rusty":
 		case "Shiny":
-			points = -1 * MAXIMUM_PURCHASE_POINTS * .8;
+			points = MAXIMUM_PURCHASE_POINTS * -.8f;
 			break;
 		default :
 			points = base.getPointsForProperty (property);

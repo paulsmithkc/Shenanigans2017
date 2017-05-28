@@ -1,23 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class HeroSpawner : MonoBehaviour
 {
-
     public int maxUnits;
     public float waitInterval;
-    public GameObject[] spawnables;
+    public Hero[] spawnables;
 
     public Transform desk;
-    public Transform leave;
-
-    List<Transform> heroes;
+    public Transform exit;
+    public List<Hero> heroes;
 
 	// Use this for initialization
-	void Start ()
+	void Start()
     {
-        heroes = new List<Transform>();
+        heroes = new List<Hero>();
         StartCoroutine(SpawnHero());
 	}
 	
@@ -39,10 +38,12 @@ public class HeroSpawner : MonoBehaviour
             if (heroes.Count < maxUnits)
             {
                 int index = Random.Range(0, spawnables.Length);
-                GameObject hero = Instantiate(spawnables[index], transform.position, Quaternion.identity);
-                Transform target = heroes.Count == 0 ? desk : heroes[heroes.Count - 1].transform;
-                hero.GetComponent<Hero>().following = target;
-                heroes.Add(hero.transform);
+                Hero hero = Instantiate(spawnables[index], transform.position, Quaternion.Euler(0,180,0));
+                Hero prevHero = heroes.LastOrDefault(x => !x._isExiting);
+
+                Transform target = prevHero == null ? desk : prevHero.transform;
+                hero.following = target;
+                heroes.Add(hero);
             }
         }
     }

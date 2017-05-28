@@ -89,7 +89,7 @@ public class FirstPersonCamera : MonoBehaviour
             if (Physics.Raycast(transform.position, transform.forward, out hit, maxReach, interactiveOnlyMask))
             {
                 var item = hit.collider.gameObject.GetComponent<Item>();
-                if (item != null)
+                if (item != null && !item.isBought)
                 {
                     item.itemTag = itemTag;
                 }

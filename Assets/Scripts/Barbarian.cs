@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Barbarian : Hero
 {
-	protected override double getPointsForProperty (string property)
+	protected override float getPointsForProperty (string property)
 	{
-		double points;
+        float points;
 		switch (property) {
 			case "Beer":
 			case "Strength-Increasing" :
@@ -14,24 +14,24 @@ public class Barbarian : Hero
 				break;
 			case "Axe":
 			case "Sword":
-				points = MAXIMUM_PURCHASE_POINTS * .85;
+				points = MAXIMUM_PURCHASE_POINTS * .85f;
 				break;
 			case "Chocolate":
 			case "Vanilla":
 			case "Caramel":
-				points = MAXIMUM_PURCHASE_POINTS * .5;
+				points = MAXIMUM_PURCHASE_POINTS * .5f;
 				break;
 			case "Stupidity":
-				points = MAXIMUM_PURCHASE_POINTS * .333;
+				points = MAXIMUM_PURCHASE_POINTS * .333f;
 				break;
 			case "Hummus":
 			case "Hemlock":
-				points = -1 * MAXIMUM_PURCHASE_POINTS * .5;
+				points = MAXIMUM_PURCHASE_POINTS * -.5f;
 				break;
 			case "Rusty":
 			case "Transparent":
 			case "Artificial":
-				points = -1 * MAXIMUM_PURCHASE_POINTS * .333;
+				points = MAXIMUM_PURCHASE_POINTS * -.333f;
 				break;
 			default :
 				points = base.getPointsForProperty (property);

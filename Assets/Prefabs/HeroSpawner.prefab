@@ -52,10 +52,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxUnits: 7
-  waitInterval: 2
+  waitInterval: 4
   spawnables:
-  - {fileID: 1579662546256296, guid: 309bffaaa2994bf48b9235c307dc5e3e, type: 2}
-  - {fileID: 1499029305009526, guid: d47224c6e3bebdb4380a5d995bf026c2, type: 2}
-  - {fileID: 1229757531509204, guid: 1d089cb255620db4d826aed040a511aa, type: 2}
+  - {fileID: 114490008792467910, guid: 309bffaaa2994bf48b9235c307dc5e3e, type: 2}
+  - {fileID: 114730195840575092, guid: d47224c6e3bebdb4380a5d995bf026c2, type: 2}
+  - {fileID: 114498708647754460, guid: 1d089cb255620db4d826aed040a511aa, type: 2}
   desk: {fileID: 0}
-  leave: {fileID: 0}
+  exit: {fileID: 0}
+  heroes: []
