@@ -390,11 +390,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   following: {fileID: 0}
+  spawn: {fileID: 0}
   _isAtCounter: 0
   _isExiting: 0
   _timeTillBuy: 0
   _itemBought: {fileID: 0}
   _thinkingSlider: {fileID: 114786968687102428}
+  _buySound: {fileID: 8300000, guid: 06a91d99acb3db5418c3d1b74b9acbac, type: 3}
 --- !u!114 &114770531071528952
 MonoBehaviour:
   m_ObjectHideFlags: 1

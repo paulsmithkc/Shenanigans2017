@@ -586,6 +586,7 @@ MonoBehaviour:
   x: 0
   y: 0
   pickupSound: {fileID: 8300000, guid: 67c6ace2b4970554d943a169c70b7309, type: 3}
+  labelSound: {fileID: 8300000, guid: 260f11dd4853ab04e811ad256bc07260, type: 3}
 --- !u!114 &114883719592673940
 MonoBehaviour:
   m_ObjectHideFlags: 1

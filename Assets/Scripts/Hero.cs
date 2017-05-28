@@ -22,6 +22,7 @@ public class Hero : MonoBehaviour
     public float _timeTillBuy;
     public Item _itemBought;
     public Slider _thinkingSlider;
+    public AudioClip _buySound;
 
     // Use this for initialization
     void Start()
@@ -91,6 +92,8 @@ public class Hero : MonoBehaviour
                 {
                     counterTop.items.Remove(_itemBought);
                     spawn.score += Mathf.Clamp(_itemBought.itemValue, 0.0f, MAXIMUM_PURCHASE_POINTS);
+
+                    AudioSource.PlayClipAtPoint(_buySound, _itemBought.transform.position, 1);
 
                     _itemBought.collider.enabled = false;
                     _itemBought.transform.parent = this.transform;

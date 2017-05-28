@@ -30,9 +30,10 @@ public class FirstPersonCamera : MonoBehaviour
 
     private AudioSource audioSource;
     public AudioClip pickupSound;
+    public AudioClip labelSound;
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start ()
     {
         Vector3 angles = transform.eulerAngles;
         x = angles.y;
@@ -91,6 +92,11 @@ public class FirstPersonCamera : MonoBehaviour
                 {
                     item.itemTag = itemTag;
                 }
+            }
+
+            if (audioSource != null && labelSound != null)
+            {
+                audioSource.PlayOneShot(labelSound, 1);
             }
         }
 
