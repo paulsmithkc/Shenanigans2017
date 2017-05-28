@@ -37,21 +37,19 @@ public class FirstPersonCamera : MonoBehaviour
         Vector3 angles = transform.eulerAngles;
         x = angles.y;
         y = angles.x;
-
-        // Lock mouse cursor
-        Cursor.lockState = CursorLockMode.Locked;
-
+        
         audioSource = GetComponent<AudioSource>();
 	}
 
     private void OnDestroy()
     {
-        Cursor.lockState = CursorLockMode.None;
     }
 
     // Update is called once per frame
     void Update()
     {
+        bool paused = Time.timeScale == 0.0f;
+        if (paused) { return; }
 
         // Get controller values
         float turn = Input.GetAxis("Horizontal");
@@ -120,7 +118,7 @@ public class FirstPersonCamera : MonoBehaviour
             {
                 if (itemTooltip != null)
                 {
-                    itemTooltip.transform.parent = this.transform;
+                    //itemTooltip.transform.parent = this.transform;
                     itemTooltip.transform.position = hit.point - 0.3f * transform.forward;
                     itemTooltip.transform.rotation = transform.rotation;
                     itemTooltip.ShowTooltip(hit.transform.gameObject);

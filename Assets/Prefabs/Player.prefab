@@ -366,7 +366,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 37d66fcfa995374458630ee8fcd2f6d9, type: 3}
     m_FontSize: 10
     m_FontStyle: 0
     m_BestFit: 0
@@ -426,7 +426,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 37d66fcfa995374458630ee8fcd2f6d9, type: 3}
     m_FontSize: 10
     m_FontStyle: 0
     m_BestFit: 0
@@ -574,7 +574,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80b1f868cd48a6e45bfe19203dd97259, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensitivity: 1
+  mouseSensitivity: 5
   controllerSensitivity: 1
   invertMouse: 1
   invertController: 1
@@ -583,6 +583,8 @@ MonoBehaviour:
   maxReach: 10
   itemTooltip: {fileID: 0}
   labelDispensor: {fileID: 114590452759892722}
+  x: 0
+  y: 0
   pickupSound: {fileID: 8300000, guid: 67c6ace2b4970554d943a169c70b7309, type: 3}
 --- !u!114 &114883719592673940
 MonoBehaviour:
