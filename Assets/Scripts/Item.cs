@@ -8,14 +8,14 @@ public class Item : MonoBehaviour {
     public string modelName;
     public Material material;
     public ItemTag itemTag;
-    public Rigidbody rigidBody;
+    public Rigidbody rigidbody;
     public Collider collider;
     public bool isBought;
     public float itemValue;
 
     void Start()
     {
-        rigidBody = GetComponent<Rigidbody>();
+        rigidbody = GetComponent<Rigidbody>();
         collider = GetComponent<Collider>();
         isBought = false;
     }

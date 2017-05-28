@@ -15,6 +15,7 @@ public class Hero : MonoBehaviour
     private float _stepBuffer = 1.0f;
     private float _stepDistance = 2;
     public Transform following;
+    public HeroSpawner spawn;
 
     public bool _isAtCounter;
     public bool _isExiting;
@@ -62,16 +63,20 @@ public class Hero : MonoBehaviour
             }
         }
 
-        if (_isAtCounter && !_isExiting)
+        var counterTop = spawn.counterTop;
+        IList<Item> items = null;
+        bool isAtFrontOfLine = ReferenceEquals(following, spawn.desk);
+        if (isAtFrontOfLine)
         {
-            var counter = GameObject.FindObjectOfType<SalesCounterTop>();
-            var items = counter.items.Where(x => !x.isBought).ToList();
+            items = counterTop.items.Where(x => !x.isBought).ToList();
             foreach (var i in items)
             {
                 float v = Mathf.Max(0.0f, CalculatePurchasePoints(i));
                 i.itemValue = v;
             }
-
+        }
+        if (isAtFrontOfLine && _isAtCounter && !_isExiting)
+        {
             _thinkingSlider.maxValue = TIME_TO_BUY;
             _thinkingSlider.value = _timeTillBuy;
             _thinkingSlider.gameObject.SetActive(true);
@@ -84,21 +89,21 @@ public class Hero : MonoBehaviour
                 _itemBought = SelectItemToBuy(items);
                 if (_itemBought != null)
                 {
-                    counter.items.Remove(_itemBought);
+                    counterTop.items.Remove(_itemBought);
+                    spawn.score += Mathf.Clamp(_itemBought.itemValue, 0.0f, MAXIMUM_PURCHASE_POINTS);
 
-                    _itemBought.rigidBody.useGravity = false;
-                    _itemBought.rigidBody.detectCollisions = false;
-                    _itemBought.rigidBody.isKinematic = true;
                     _itemBought.collider.enabled = false;
                     _itemBought.transform.parent = this.transform;
-                    _itemBought.rigidBody.position =
+                    _itemBought.rigidbody.useGravity = false;
+                    _itemBought.rigidbody.detectCollisions = false;
+                    _itemBought.rigidbody.isKinematic = true;
+                    _itemBought.rigidbody.position =
                         this.transform.position
                         - 0.5f * this.transform.right
                         + 0.5f * this.transform.forward
                         + 0.2f * this.transform.up;
                 }
                 
-                var spawn = GameObject.FindObjectOfType<HeroSpawner>();
                 foreach (var h in spawn.heroes)
                 {
                     if (ReferenceEquals(h.following, this.transform))
@@ -129,9 +134,7 @@ public class Hero : MonoBehaviour
         float sum = BASE_NO_SALE_CHANCE;
         foreach (var i in items)
         {
-            float v = Mathf.Max(0.0f, CalculatePurchasePoints(i));
-            i.itemValue = v;
-            sum += v;
+            sum += Mathf.Max(i.itemValue, 0.0f);
         }
 
         float rand = Random.Range(0.0f, sum);
@@ -147,7 +150,7 @@ public class Hero : MonoBehaviour
             float cumulative = BASE_NO_SALE_CHANCE;
             foreach (var i in items)
             {
-                cumulative += i.itemValue;
+                cumulative += Mathf.Max(i.itemValue, 0.0f);
                 if (rand < cumulative)
                 {
                     selectedItem = i;
