@@ -1271,12 +1271,17 @@ Prefab:
     - target: {fileID: 224076147131180738, guid: 466c37b47a9e25a42bdfbfa6432ef215,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224076147131180738, guid: 466c37b47a9e25a42bdfbfa6432ef215,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114679379066135110, guid: 466c37b47a9e25a42bdfbfa6432ef215,
+        type: 2}
+      propertyPath: mouseSensitivity
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 466c37b47a9e25a42bdfbfa6432ef215, type: 2}
