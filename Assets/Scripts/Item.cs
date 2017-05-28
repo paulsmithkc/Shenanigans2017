@@ -8,4 +8,10 @@ public class Item : MonoBehaviour {
     public string modelName;
     public Material material;
     public ItemTag itemTag;
+    public Rigidbody rigidBody;
+
+    void Start()
+    {
+        rigidBody = GetComponent<Rigidbody>();
+    }
 }

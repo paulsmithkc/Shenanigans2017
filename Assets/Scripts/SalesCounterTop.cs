@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SalesCounter : MonoBehaviour
+public class SalesCounterTop : MonoBehaviour
 {
     public List<Item> items;
 

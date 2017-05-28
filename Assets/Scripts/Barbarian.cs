@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Barbarian : Character {
+public class Barbarian : Hero
+{
 	protected override double getPointsForProperty (string property)
 	{
 		double points;
