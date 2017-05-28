@@ -90,6 +90,7 @@ public class Hero : MonoBehaviour
                 if (_itemBought != null)
                 {
                     counterTop.items.Remove(_itemBought);
+                    spawn.score += Mathf.Clamp(_itemBought.itemValue, 0.0f, MAXIMUM_PURCHASE_POINTS);
 
                     _itemBought.rigidBody.useGravity = false;
                     _itemBought.rigidBody.detectCollisions = false;
@@ -133,9 +134,7 @@ public class Hero : MonoBehaviour
         float sum = BASE_NO_SALE_CHANCE;
         foreach (var i in items)
         {
-            float v = Mathf.Max(0.0f, CalculatePurchasePoints(i));
-            i.itemValue = v;
-            sum += v;
+            sum += Mathf.Max(i.itemValue, 0.0f);
         }
 
         float rand = Random.Range(0.0f, sum);
@@ -151,7 +150,7 @@ public class Hero : MonoBehaviour
             float cumulative = BASE_NO_SALE_CHANCE;
             foreach (var i in items)
             {
-                cumulative += i.itemValue;
+                cumulative += Mathf.Max(i.itemValue, 0.0f);
                 if (rand < cumulative)
                 {
                     selectedItem = i;

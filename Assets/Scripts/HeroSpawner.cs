@@ -2,13 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HeroSpawner : MonoBehaviour
 {
     public int maxUnits;
     public float waitInterval;
     public Hero[] spawnables;
+    public float score;
+    public Text scoreField;
 
+    public FirstPersonCamera player;
     public SalesCounterTop counterTop;
     public Transform desk;
     public Transform exit;
@@ -17,6 +21,8 @@ public class HeroSpawner : MonoBehaviour
 	// Use this for initialization
 	void Start()
     {
+        score = 0;
+        player = GameObject.FindObjectOfType<FirstPersonCamera>();
         counterTop = GameObject.FindObjectOfType<SalesCounterTop>();
         heroes = new List<Hero>();
         StartCoroutine(SpawnHero());
@@ -25,10 +31,13 @@ public class HeroSpawner : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        // Make sure first item in list is targeting desk
-        if (heroes.Count != 0)
+        scoreField.text = score.ToString("F0");
+
+        // Make sure first hero in line is targeting the desk
+        var first = heroes.FirstOrDefault(x => !x._isExiting);
+        if (first != null)
         {
-            heroes[0].gameObject.GetComponent<Hero>().following = desk;
+            first.following = desk;
         }
 	}
 

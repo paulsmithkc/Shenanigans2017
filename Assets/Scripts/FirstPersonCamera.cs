@@ -26,8 +26,8 @@ public class FirstPersonCamera : MonoBehaviour
     private float heldItemDistance;
     private float previousPickupValue; 
 
-    float x = 0.0f;
-    float y = 0.0f;
+    public float x = 0.0f;
+    public float y = 0.0f;
 
     private AudioSource audioSource;
     public AudioClip pickupSound;
