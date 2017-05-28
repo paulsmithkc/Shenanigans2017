@@ -92,12 +92,12 @@ public class Hero : MonoBehaviour
                     counterTop.items.Remove(_itemBought);
                     spawn.score += Mathf.Clamp(_itemBought.itemValue, 0.0f, MAXIMUM_PURCHASE_POINTS);
 
-                    _itemBought.rigidBody.useGravity = false;
-                    _itemBought.rigidBody.detectCollisions = false;
-                    _itemBought.rigidBody.isKinematic = true;
                     _itemBought.collider.enabled = false;
                     _itemBought.transform.parent = this.transform;
-                    _itemBought.rigidBody.position =
+                    _itemBought.rigidbody.useGravity = false;
+                    _itemBought.rigidbody.detectCollisions = false;
+                    _itemBought.rigidbody.isKinematic = true;
+                    _itemBought.rigidbody.position =
                         this.transform.position
                         - 0.5f * this.transform.right
                         + 0.5f * this.transform.forward

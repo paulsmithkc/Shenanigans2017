@@ -22,9 +22,8 @@ public class FirstPersonCamera : MonoBehaviour
     public ItemTooltip itemTooltip = null;
     public ItemTagGenerator labelDispensor = null;
 
-    private Transform heldItem;
+    private GameObject heldItem;
     private float heldItemDistance;
-    private float previousPickupValue; 
 
     public float x = 0.0f;
     public float y = 0.0f;
@@ -81,7 +80,8 @@ public class FirstPersonCamera : MonoBehaviour
         // Gotta do some shifty bits to get the layer masks to work as expected
         int interactiveOnlyMask = 1 << LayerMask.NameToLayer("Interactive");
 
-        if (Input.GetButtonDown("Label"))
+        if (Input.GetButtonDown("Label") ||
+            Input.GetButtonDown("Pickup"))
         {
             var itemTag = labelDispensor.DispenseTag();
 
@@ -97,15 +97,14 @@ public class FirstPersonCamera : MonoBehaviour
         }
 
         // See if we're trying to pick something up
-        float pickup = Input.GetAxis("Pickup");
-        if (pickup != 0 && previousPickupValue == 0)
+        if (Input.GetButtonDown("Pickup"))
         {
             if (heldItem == null)
             {
                 RaycastHit hit;
                 if (Physics.Raycast(transform.position, transform.forward, out hit, maxReach, interactiveOnlyMask))
                 {
-                    Pickup(hit.transform);
+                    Pickup(hit.transform.gameObject);
                 }
             }
             else
@@ -114,12 +113,22 @@ public class FirstPersonCamera : MonoBehaviour
             }
             HideTooltip();
         }
-        else if (heldItem == null)
+        else
         {
             RaycastHit hit;
             if (Physics.Raycast(transform.position, transform.forward, out hit, maxReach, interactiveOnlyMask))
             {
-                ShowTooltip(hit);
+                if (itemTooltip != null)
+                {
+                    itemTooltip.transform.parent = this.transform;
+                    itemTooltip.transform.position = hit.point - 0.3f * transform.forward;
+                    itemTooltip.transform.rotation = transform.rotation;
+                    itemTooltip.ShowTooltip(hit.transform.gameObject);
+                }
+            }
+            else if (heldItem != null)
+            {
+                ShowTooltip(heldItem);
             }
             else
             {
@@ -130,17 +139,14 @@ public class FirstPersonCamera : MonoBehaviour
         // Update position of held item
         if (heldItem != null)
         {
-            heldItem.position = transform.position + transform.forward * heldItemDistance;
+            heldItem.transform.position = transform.position + transform.forward * heldItemDistance;
         }
-
-        // Update previous value
-        previousPickupValue = pickup;
 	}
 
-    void Pickup(Transform target)
+    void Pickup(GameObject target)
     {
         heldItem = target;
-        heldItemDistance = Vector3.Distance(transform.position, target.position);
+        heldItemDistance = Vector3.Distance(transform.position, target.transform.position);
 
         // Turn off gravity, or else shit gets weird
         heldItem.gameObject.GetComponent<Rigidbody>().useGravity = false;
@@ -161,14 +167,11 @@ public class FirstPersonCamera : MonoBehaviour
         }
     }
 
-    void ShowTooltip(RaycastHit hit)
+    void ShowTooltip(GameObject obj)
     {
         if (itemTooltip != null)
         {
-            itemTooltip.transform.position = hit.point - 0.3f * transform.forward;
-            itemTooltip.transform.rotation = transform.rotation;
-
-            itemTooltip.ShowTooltip(hit.collider.gameObject);
+            itemTooltip.ShowTooltip(obj);
         }
     }
 
