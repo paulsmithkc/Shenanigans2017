@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 136707013451392660}
   - component: {fileID: 23661262895835646}
   - component: {fileID: 114164593965413560}
+  - component: {fileID: 114490008792467910}
   m_Layer: 0
   m_Name: BarbarianHero
   m_TagString: Untagged
@@ -181,6 +182,17 @@ MonoBehaviour:
   buffer: 1
   stepDistance: 0.1
   following: {fileID: 0}
+--- !u!114 &114490008792467910
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1579662546256296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7ee5b2c126da4edf990d4cd39b14d67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!136 &136707013451392660
 CapsuleCollider:
   m_ObjectHideFlags: 1
