@@ -9,6 +9,7 @@ public class HeroSpawner : MonoBehaviour
     public float waitInterval;
     public Hero[] spawnables;
 
+    public SalesCounterTop counterTop;
     public Transform desk;
     public Transform exit;
     public List<Hero> heroes;
@@ -16,6 +17,7 @@ public class HeroSpawner : MonoBehaviour
 	// Use this for initialization
 	void Start()
     {
+        counterTop = GameObject.FindObjectOfType<SalesCounterTop>();
         heroes = new List<Hero>();
         StartCoroutine(SpawnHero());
 	}
@@ -43,6 +45,7 @@ public class HeroSpawner : MonoBehaviour
 
                 Transform target = prevHero == null ? desk : prevHero.transform;
                 hero.following = target;
+                hero.spawn = this;
                 heroes.Add(hero);
             }
         }
