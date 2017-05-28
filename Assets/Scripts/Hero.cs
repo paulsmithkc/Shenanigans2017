@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Hero : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class Hero : MonoBehaviour
     public bool _isExiting;
     public float _timeTillBuy;
     public Item _itemBought;
+    public Slider _thinkingSlider;
 
     // Use this for initialization
     void Start()
@@ -59,6 +61,7 @@ public class Hero : MonoBehaviour
                 );
             }
         }
+
         if (_isAtCounter && !_isExiting)
         {
             var counter = GameObject.FindObjectOfType<SalesCounterTop>();
@@ -68,6 +71,10 @@ public class Hero : MonoBehaviour
                 float v = Mathf.Max(0.0f, CalculatePurchasePoints(i));
                 i.itemValue = v;
             }
+
+            _thinkingSlider.maxValue = TIME_TO_BUY;
+            _thinkingSlider.value = _timeTillBuy;
+            _thinkingSlider.gameObject.SetActive(true);
 
             _timeTillBuy -= Time.deltaTime;
             if (_timeTillBuy <= 0.0f)
@@ -102,6 +109,10 @@ public class Hero : MonoBehaviour
                 following = spawn.exit;
                 spawn.heroes.Remove(this);
             }
+        }
+        else
+        {
+            _thinkingSlider.gameObject.SetActive(false);
         }
     }
 
